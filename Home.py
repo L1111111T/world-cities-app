@@ -13,4 +13,7 @@ if st.button("Go to App"):
     try:
         st.switch_page(MAIN_APP_PAGE)
     except StreamlitAPIException:
-        st.switch_page(MAIN_APP_PAGE_FALLBACK)
+        try:
+            st.switch_page(MAIN_APP_PAGE_FALLBACK)
+        except StreamlitAPIException:
+            st.error("Unable to open the app page. Please add `pages/app.py` and try again.")
