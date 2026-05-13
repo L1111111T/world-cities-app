@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit.errors import StreamlitAPIException
 
 MAIN_APP_PAGE = "pages/app.py"
 MAIN_APP_PAGE_FALLBACK = "pages/app"
@@ -11,5 +12,5 @@ st.write("Welcome! Use the button below to open the main app page.")
 if st.button("Go to App"):
     try:
         st.switch_page(MAIN_APP_PAGE)
-    except Exception:
+    except StreamlitAPIException:
         st.switch_page(MAIN_APP_PAGE_FALLBACK)
